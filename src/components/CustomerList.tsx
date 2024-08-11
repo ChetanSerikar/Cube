@@ -35,7 +35,7 @@ const CustomerList: React.FC<CustomerListProps> & {
 CustomerList.Container = ({ children }: CustomerListContainerProps) => {
   return <div className="customer-list">{children}</div>;
 };
-CustomerList.Item = React.memo(({ customer }: CustomerListItemProps) => {
+CustomerList.Item = ({ customer }: CustomerListItemProps) => {
   const { selectedCustomer, setSelectedCustomer } = useContext(CustomerContext);
 
   const handleClick = () => {
@@ -52,5 +52,5 @@ CustomerList.Item = React.memo(({ customer }: CustomerListItemProps) => {
       <p>{customer.title}</p>
     </div>
   );
-});
+};
 export default CustomerList;

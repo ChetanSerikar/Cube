@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+interface Product {
+  id: number;
+  thumbnail: string;
+}
 
 const PhotoGrid: React.FC = () => {
   const [photos, setPhotos] = useState<string[]>([]);
@@ -7,13 +11,12 @@ const PhotoGrid: React.FC = () => {
     const fetchPhotos = async () => {
       fetch(
         `https://dummyjson.com/products?limit=9&skip=${
-          Math.floor(Math.random() * 8 + 2) * 10
+          Math.floor(Math.random() * (99 - 11 + 1)) + 11
         }&select=thumbnail`
       )
         .then((res) => res.json())
-        // .then((data) => console.log(data.products));
         .then((data) =>
-          setPhotos(data.products.map((prod, i) => prod.thumbnail))
+          setPhotos(data.products.map((prod: Product) => prod.thumbnail))
         );
     };
 
